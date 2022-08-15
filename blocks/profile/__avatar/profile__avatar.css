@@ -1,0 +1,13 @@
+.profile__avatar {
+  grid-area: image;
+  max-width: 120px;
+  border-radius: 50%;
+  justify-self: center;
+  align-self: center;
+}
+
+@media screen and (min-width: 600px) {
+  .profile__avatar {
+    justify-self: flex-start;
+  }
+}

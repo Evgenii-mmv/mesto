@@ -1,0 +1,9 @@
+.profile__info {
+  grid-area: information;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  margin-top: 22px;
+  margin-bottom: 36px;
+}

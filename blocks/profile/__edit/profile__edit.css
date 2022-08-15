@@ -1,0 +1,7 @@
+.profile__edit {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-areas: "fullName editButton";
+  margin: 0;
+  padding: 0;
+}

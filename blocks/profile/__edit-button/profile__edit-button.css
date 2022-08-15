@@ -1,0 +1,25 @@
+.profile__edit-button {
+  background-image: url(../../../images/VectorEdit.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+  max-width: 18px;
+  max-height: 18px;
+  width: 100%;
+  padding: 8px;
+  grid-area: editButton;
+  align-self: center;
+  justify-self: end;
+  margin: 0;
+  border: 1px solid #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+  .profile__edit-button {
+    max-width: 24px;
+    max-height: 24px;
+    padding: 11px;
+    margin: 0 0 0 18px;
+  }
+}
