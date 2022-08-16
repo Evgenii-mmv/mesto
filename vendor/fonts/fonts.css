@@ -24,3 +24,12 @@
   src: url("./Inter-Black.otf") format("woff2"),
     url("./Inter-Black.otf") format("woff");
 }
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./Inter-Medium.otf") format("woff2"),
+    url("./Inter-Medium.otf") format("woff");
+}

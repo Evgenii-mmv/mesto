@@ -4,3 +4,12 @@
   margin-bottom: 31px;
   margin-left: 27px;
 }
+
+@media screen and (min-width: 600px) {
+  .header__logo {
+    max-width: 142px;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 41px;
+  }
+}

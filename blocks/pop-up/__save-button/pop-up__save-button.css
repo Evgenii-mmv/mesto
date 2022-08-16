@@ -17,11 +17,12 @@
 }
 
 @media screen and (min-width: 600px) {
-  .popup__save-button {
+  .pop-up__save-button {
     padding: 14px 125px 18px;
     max-width: 358px;
     width: 100%;
     font-size: 18px;
     line-height: 22px;
+    margin-top: 48px;
   }
 }
