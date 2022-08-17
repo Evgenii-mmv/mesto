@@ -20,7 +20,7 @@
     max-width: 880px;
     padding-top: 40px;
     padding-bottom: 47px;
-    grid-template-columns: 120px 336px 1fr;
+    grid-template-columns: 120px 336px 100px;
     grid-template-areas:
       "image information addButton";
   }
@@ -31,5 +31,11 @@
     padding-left: 0;
     padding-right: 0;
     column-gap: 30px;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .profile {
+    grid-template-columns: 120px 336px 1fr;
   }
 }
