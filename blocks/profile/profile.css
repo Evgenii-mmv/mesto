@@ -15,13 +15,6 @@
   box-sizing: border-box;
 }
 
-@media screen and (min-width:321px) and (max-width: 900px) {
-  .profile {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-
 @media screen and (min-width: 600px) {
   .profile {
     max-width: 880px;
@@ -30,7 +23,6 @@
     grid-template-columns: 120px 336px 1fr;
     grid-template-areas:
       "image information addButton";
-    column-gap: 30px;
   }
 }
 
@@ -38,5 +30,6 @@
   .profile {
     padding-left: 0;
     padding-right: 0;
+    column-gap: 30px;
   }
 }
