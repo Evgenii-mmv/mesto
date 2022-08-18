@@ -18,7 +18,7 @@
   .profile {
     max-width: 880px;
     padding-top: 40px;
-    padding-bottom: 47px;
+    padding-bottom: 45px;
     grid-template-columns: 120px 336px 100px;
     grid-template-areas:
       "image information addButton";

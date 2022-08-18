@@ -3,6 +3,7 @@
   background: #ffffff;
   box-sizing: border-box;
   max-width: 282px;
+  max-height: 322px;
   width: 100%;
   border-radius: 10px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
@@ -14,5 +15,7 @@
   .pop-up__container {
     padding: 34px 36px 37px;
     max-width: 430px;
+    max-height: 330px;
+    height: 100%;
   }
 }

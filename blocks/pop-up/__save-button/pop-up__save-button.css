@@ -9,6 +9,8 @@
   padding: 14px 82px;
   margin: 45px 0 0;
   border-radius: 2px;
+  width: 238px;
+  height: 48px;
 }
 
 .pop-up__save-button:hover {
@@ -24,6 +26,8 @@
     width: 100%;
     font-size: 18px;
     line-height: 22px;
-    margin-top: 48px;
+    margin-top: 45px;
+    max-height: 50px;
+    height: 100%;
   }
 }
