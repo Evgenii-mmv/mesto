@@ -1,28 +1,26 @@
 .cards {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
   gap: 20px;
   max-width: 100%;
   padding: 0;
   padding-top: 36px;
   color: #000000;
   justify-items: center;
+  box-sizing: border-box;
 }
 
 @media screen and (min-width:650px) {
   .cards {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
     gap: 20px 25px;
     padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1028px) {
   .cards {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     padding-left: 200px;
     padding-right: 200px;
     gap: 20px 17px;
