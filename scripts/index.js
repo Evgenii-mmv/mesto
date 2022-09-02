@@ -10,8 +10,8 @@ const imageCloseButton = imagePopup.querySelector('.pop-up__close-button');
 const addButton = document.querySelector('.profile__add-button');
 const editButton = document.querySelector('.profile__edit-button');
 //Отправка форм pop-up  / сохранение изменений в pop-up
-const popupEditForm = editPopup.querySelector('.popup__form_type_edit');
-const popupAddForm = addPopup.querySelector('.popup__form_type_add');
+const popupEditForm = editPopup.querySelector('.pop-up__form_type_edit');
+const popupAddForm = addPopup.querySelector('.pop-up__form_type_add');
 //Инпуты
 const profileName = document.querySelector('.profile__title');
 const profileJob = document.querySelector('.profile__subtitle');
