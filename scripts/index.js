@@ -3,9 +3,9 @@ const addPopup = document.querySelector('.pop-up_theme_add');
 const editPopup = document.querySelector('.pop-up_theme_edit');
 const imagePopup = document.querySelector('.pop-up_theme_image');
 // Закрытие pop-up
-const editCloseButton = editPopup.querySelector('.pop-up__close-button');
-const addCloseButton = addPopup.querySelector('.pop-up__close-button');
-const imageCloseButton = imagePopup.querySelector('.pop-up__close-button');
+const editPopupCloseButton = editPopup.querySelector('.pop-up__close-button');
+const addPopupCloseButton = addPopup.querySelector('.pop-up__close-button');
+const imagePopupCloseButton = imagePopup.querySelector('.pop-up__close-button');
 //Открытие pop-up
 const addButton = document.querySelector('.profile__add-button');
 const editButton = document.querySelector('.profile__edit-button');
@@ -20,7 +20,7 @@ const imageSource = popupAddForm.querySelector('.pop-up__input_image');
 const nameInput = editPopup.querySelector('.pop-up__input_type_name');
 const jobInput = editPopup.querySelector('.pop-up__input_type_job');
 //Карточки
-const cardElement = document.querySelector('.cards');
+const cardsElement = document.querySelector('.cards');
 const templateElement = document.querySelector('.template');
 //pop-up изображения
 const popupImage = imagePopup.querySelector('.pop-up__image');
@@ -39,7 +39,7 @@ function clickEditHandler() {
   openPopup(editPopup);
 }
 //функция открытия image pop-up
-function imageHandler(evt, link, name) {
+function clickCardImageHandler(evt, link, name) {
   openPopup(imagePopup);
   popupImage.src = link;
   popupImage.alt = name;
@@ -82,14 +82,14 @@ function addFormSubmitHandler(evt) {
     name: title,
     link: image
   }
-  cardElement.prepend(createCard(objectCard));
+  cardsElement.prepend(createCard(objectCard));
   closeAddPopup();
   popupAddForm.reset();
 }
 //создание карточек 
 function createCard(card) {
   //Содержание карточек
-  const newItemElement = templateElement.content.cloneNode(true);
+  const newItemElement = templateElement.content.querySelector('.card').cloneNode(true);
   const cardImage = newItemElement.querySelector('.card__image');
   const deleteButton = newItemElement.querySelector('.card__delete-button');
   const likeButton = newItemElement.querySelector('.card__like-button');
@@ -98,15 +98,15 @@ function createCard(card) {
   newItemElement.querySelector('.card__image').alt = card.name;
   newItemElement.querySelector('.card__title').textContent = card.name;
   //Вызов функцкий, которые связанные с карточками. В самой функции карточек т.к обалсть видимости не позволяет вне ее сделать
-  cardImage.addEventListener('click', evt => imageHandler(evt, card.link, card.name));
+  cardImage.addEventListener('click', evt => clickCardImageHandler(evt, card.link, card.name));
   likeButton.addEventListener('click', evt => likeHandler(evt, likeButton));
   deleteButton.addEventListener('click', deleteHandler);
   return newItemElement;
 }
 //добавления карточкек в дом
-function addCards() {
+function addInitialCards() {
   initialCards.forEach(element => {
-    cardElement.prepend(createCard(element));
+    cardsElement.prepend(createCard(element));
   });
 }
 //лайк карточке
@@ -119,14 +119,14 @@ function deleteHandler(evt) {
   element.remove();
 }
 //Вызов функции для добавления карточек на страницу через js
-addCards();
+addInitialCards();
 //вызов функции открытия pop-up
 addButton.addEventListener('click', clickAddHandler);
 editButton.addEventListener('click', clickEditHandler);
 //вызов функции закртия pop-up
-editCloseButton.addEventListener('click', closeEditPopup);
-addCloseButton.addEventListener('click', closeAddPopup);
-imageCloseButton.addEventListener('click', closeImagePopup);
+editPopupCloseButton.addEventListener('click', closeEditPopup);
+addPopupCloseButton.addEventListener('click', closeAddPopup);
+imagePopupCloseButton.addEventListener('click', closeImagePopup);
 //вызов функии отправки форм
 popupEditForm.addEventListener('submit', editFormSubmitHandler);
 popupAddForm.addEventListener('submit', addFormSubmitHandler);
