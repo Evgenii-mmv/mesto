@@ -28,6 +28,7 @@ const popupCaption = imagePopup.querySelector('.pop-up__cardtitle');
 //Универальная функция открытия pop-up
 function openPopup(popup) {
   popup.classList.add('pop-up_opened');
+  document.addEventListener('keydown', closeThroughEscape);
 }
 //функция открытия add pop-up
 function clickAddHandler() {
@@ -48,6 +49,27 @@ function clickCardImageHandler(evt, link, name) {
 //Универсальная функция закрытия pop-up
 function closePopup(popup) {
   popup.classList.remove('pop-up_opened');
+  document.removeEventListener('keydown', closeThroughEscape);
+}
+//закртие pop-up при нажатии на кнопку Esc
+function closeThroughEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.pop-up_opened');
+    closePopup(openedPopup);
+  }
+}
+//создаем массив всех pop-up`ов, что потом передать их в функцию закрытия
+function arrPopup() {
+  const listPopup = Array.from(document.querySelectorAll('.pop-up'));
+  listPopup.forEach(closeThroughBackgraund);
+}
+//Закртие pop-up через бекграунд
+function closeThroughBackgraund(popup) {
+  popup.addEventListener('click', (evt) => {
+    if (popup.classList.contains('pop-up_opened') && evt.target === evt.currentTarget) {
+      closePopup(popup);
+    }
+  })
 }
 //закрытие pop-up edit
 function closeEditPopup() {
