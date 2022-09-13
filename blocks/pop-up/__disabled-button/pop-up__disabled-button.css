@@ -5,3 +5,8 @@
   border-radius: 2px;
   opacity: .2;
 }
+
+.pop-up__disabled-button:hover {
+  cursor: default;
+  opacity: .2;
+}

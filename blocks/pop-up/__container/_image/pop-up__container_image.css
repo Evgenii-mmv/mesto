@@ -1,15 +1,23 @@
 .pop-up__container_image {
-  background-color: transparent;
-  margin: 0;
+  box-sizing: border-box;
   padding: 0;
+  margin: 0;
   display: flex;
-  flex-direction: column;
+  max-width: 75vw;
+  max-height: 300px;
   justify-content: center;
-  max-width: 240px;
+  align-items: center;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 425px) {
   .pop-up__container_image {
-    max-width: 816px;
+    max-height: 75vh;
   }
 }
+
+/*@media screen and (min-width: 1024px) {
+  .pop-up__container_image {
+    min-height: 540px;
+    min-width: 433px;
+  }
+}*/
