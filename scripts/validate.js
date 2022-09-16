@@ -12,6 +12,13 @@ function enableValidation(config) {
   //массив форм
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+    formElement.addEventListener('reset', (event) => {
+      const buttonsub = formElement.querySelector(config.submitButtonSelector);
+      setInactiveButtonState(buttonsub, config);
+    });
     setEventListeners(formElement, config);
   });
 }
@@ -49,7 +56,6 @@ function showInputError(formElement, inputElement, errorMessage, config) {
   error.classList.add(config.errorClass);
   error.textContent = errorMessage;
 }
-
 //удаления класса с ошибкой
 function hideInputError(formElement, inputElement, config) {
   const error = formElement.querySelector(`#${inputElement.id}-error`);
@@ -68,12 +74,12 @@ function toggleButtonState(inputList, submitbutton, config) {
 //делаем кнопку неактивной
 function setInactiveButtonState(submitbutton, config) {
   submitbutton.classList.add(config.inactiveButtonClass);
-  submitbutton.setAttribute('disabled', 'disabled');
+  submitbutton.setAttribute('disabled', true);
 }
 //делаем кнопку активной
 function setActiveButtonState(submitbutton, config) {
   submitbutton.classList.remove(config.inactiveButtonClass);
-  submitbutton.removeAttribute('disabled', 'disabled');
+  submitbutton.removeAttribute('disabled', false);
 }
 
 enableValidation(validationConfig);

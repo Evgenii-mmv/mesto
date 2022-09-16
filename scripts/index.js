@@ -31,16 +31,16 @@ function openPopup(popup) {
   document.addEventListener('keydown', closeThroughEscape);
 }
 //функция открытия add pop-up
-function addHandlerClick() {
+function openAddPopup(evt) {
   openPopup(popupAdd);
 }
 //функция открытия edit pop-up
-function clickEditHandler() {
+function openEditPopup() {
   formValue();
   openPopup(popupEdit);
 }
 //функция открытия image pop-up
-function clickCardImageHandler(evt, link, name) {
+function openImagePopup(evt, link, name) {
   openPopup(imagePopup);
   popupImage.src = link;
   popupImage.alt = name;
@@ -48,8 +48,10 @@ function clickCardImageHandler(evt, link, name) {
 }
 //Универсальная функция закрытия pop-up
 function closePopup(popup) {
+  popupAddForm.reset();
   popup.classList.remove('pop-up_opened');
   document.removeEventListener('keydown', closeThroughEscape);
+  popup.removeEventListener('click', closeThroughBackgraund);
 }
 //закртие pop-up при нажатии на кнопку Esc
 function closeThroughEscape(evt) {
@@ -59,7 +61,7 @@ function closeThroughEscape(evt) {
   }
 }
 //создаем массив всех pop-up`ов, что потом передать их в функцию закрытия
-function arrPopup() {
+function createArrPopup() {
   const listPopup = Array.from(document.querySelectorAll('.pop-up'));
   listPopup.forEach(closeThroughBackgraund);
 }
@@ -106,7 +108,6 @@ function addFormSubmitHandler(evt) {
   }
   cardsElement.prepend(createCard(objectCard));
   closepopupAdd();
-  popupAddForm.reset();
 }
 //создание карточек 
 function createCard(card) {
@@ -120,7 +121,7 @@ function createCard(card) {
   newItemElement.querySelector('.card__image').alt = card.name;
   newItemElement.querySelector('.card__title').textContent = card.name;
   //Вызов функцкий, которые связанные с карточками. В самой функции карточек т.к обалсть видимости не позволяет вне ее сделать
-  cardImage.addEventListener('click', evt => clickCardImageHandler(evt, card.link, card.name));
+  cardImage.addEventListener('click', evt => openImagePopup(evt, card.link, card.name));
   likeButton.addEventListener('click', evt => likeHandler(evt, likeButton));
   deleteButton.addEventListener('click', deleteHandler);
   return newItemElement;
@@ -140,13 +141,14 @@ function deleteHandler(evt) {
   const element = evt.target.closest('.card');
   element.remove();
 }
+
+createArrPopup();
 //Вызов функции для добавления карточек на страницу через js
 addInitialCards();
 //вызов функции открытия pop-up
-addButton.addEventListener('click', addHandlerClick);
-editButton.addEventListener('click', clickEditHandler);
+addButton.addEventListener('click', openAddPopup);
+editButton.addEventListener('click', openEditPopup);
 //вызов функции закртия pop-up
-arrPopup()
 popupEditCloseButton.addEventListener('click', closepopupEdit);
 popupAddCloseButton.addEventListener('click', closepopupAdd);
 imagePopupCloseButton.addEventListener('click', closeImagePopup);
