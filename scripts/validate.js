@@ -3,7 +3,7 @@ const validationConfig = {
   inputSelector: '.pop-up__input',
   formSelector: '.pop-up__form',
   inputErrorClass: 'pop-up__input_type_error',
-  submitButtonSelector: '.pop-up__button',
+  buttonSubmitSelector: '.pop-up__button',
   inactiveButtonClass: 'pop-up__disabled-button',
   errorClass: 'error_visible'
 }
@@ -16,7 +16,7 @@ function enableValidation(config) {
       evt.preventDefault();
     });
     formElement.addEventListener('reset', (event) => {
-      const buttonsub = formElement.querySelector(config.submitButtonSelector);
+      const buttonsub = formElement.querySelector(config.buttonSubmitSelector);
       setInactiveButtonState(buttonsub, config);
     });
     setEventListeners(formElement, config);
@@ -26,7 +26,7 @@ function enableValidation(config) {
 function setEventListeners(formElement, config) {
   //массив из инпутов формы
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-  const submitbutton = formElement.querySelector(config.submitButtonSelector);
+  const submitbutton = formElement.querySelector(config.buttonSubmitSelector);
   //Даем кнопки неактивное состояние в начале открытия pop-up
   toggleButtonState(inputList, submitbutton, config);
   //проверка инпутов на валидность, чтобы задать необходимый класс кнопке
