@@ -30,9 +30,17 @@ function openPopup(popup) {
   popup.classList.add('pop-up_opened');
   document.addEventListener('keydown', closeThroughEscape);
 }
+//Устнавока обработчика и условная конструкцией для ресета инпутов
+function openAndResetAddPopup() {
+  buttonAdd.addEventListener('click', openAddPopup);
+  if (popupAdd.classList.contains('pop-up_opened')) {
+    openAddPopup(popupAddForm);
+  }
+}
 //функция открытия add pop-up
 function openAddPopup(evt) {
   openPopup(popupAdd);
+  popupAddForm.reset();
 }
 //функция открытия edit pop-up
 function openEditPopup() {
@@ -55,7 +63,6 @@ function closePopup(popup) {
 function closeThroughEscape(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.pop-up_opened');
-    closePopupAdd();
     closePopup(openedPopup);
   }
 }
@@ -68,7 +75,6 @@ function createArrPopup() {
 function closeThroughBackgraund(popup) {
   popup.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
-      closePopupAdd();
       closePopup(popup);
     }
   })
@@ -79,7 +85,6 @@ function closePopupEdit() {
 }
 //закрытие pop-up add
 function closePopupAdd() {
-  popupAddForm.reset();
   closePopup(popupAdd);
 }
 //закрытие pop-up image
@@ -147,8 +152,9 @@ createArrPopup();
 //Вызов функции для добавления карточек на страницу через js
 addInitialCards();
 //вызов функции открытия pop-up
-buttonAdd.addEventListener('click', openAddPopup);
 buttonEdit.addEventListener('click', openEditPopup);
+//вызов функции , которая осуществляет вызов функции ресета инпутов и дает обработчик по клике на кнопку
+openAndResetAddPopup(buttonAdd, popupAddForm, popupAdd);
 //вызов функции закртия pop-up
 popupEditCloseButton.addEventListener('click', closePopupEdit);
 popupAddCloseButton.addEventListener('click', closePopupAdd);
