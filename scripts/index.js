@@ -30,13 +30,6 @@ function openPopup(popup) {
   popup.classList.add('pop-up_opened');
   document.addEventListener('keydown', closeThroughEscape);
 }
-//Устнавока обработчика и условная конструкцией для ресета инпутов
-function openAndResetAddPopup() {
-  buttonAdd.addEventListener('click', openAddPopup);
-  if (popupAdd.classList.contains('pop-up_opened')) {
-    openAddPopup(popupAddForm);
-  }
-}
 //функция открытия add pop-up
 function openAddPopup(evt) {
   openPopup(popupAdd);
@@ -153,8 +146,7 @@ createArrPopup();
 addInitialCards();
 //вызов функции открытия pop-up
 buttonEdit.addEventListener('click', openEditPopup);
-//вызов функции , которая осуществляет вызов функции ресета инпутов и дает обработчик по клике на кнопку
-openAndResetAddPopup(buttonAdd, popupAddForm, popupAdd);
+buttonAdd.addEventListener('click', openAddPopup);
 //вызов функции закртия pop-up
 popupEditCloseButton.addEventListener('click', closePopupEdit);
 popupAddCloseButton.addEventListener('click', closePopupAdd);
