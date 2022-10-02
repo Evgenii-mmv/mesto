@@ -1,3 +1,7 @@
+//import
+import Card from './Card.js';
+import { initialCards } from "./cards.js";
+import FormValidator from "./FormValidator.js";
 //pop-up
 const popupAdd = document.querySelector('.pop-up_theme_add');
 const popupEdit = document.querySelector('.pop-up_theme_edit');
@@ -21,10 +25,24 @@ const nameInput = popupEdit.querySelector('.pop-up__input_type_name');
 const jobInput = popupEdit.querySelector('.pop-up__input_type_job');
 //Карточки
 const cardsElement = document.querySelector('.cards');
-const templateElement = document.querySelector('.template');
 //pop-up изображения
 const popupImage = imagePopup.querySelector('.pop-up__image');
 const popupCaption = imagePopup.querySelector('.pop-up__cardtitle');
+//Валмдация
+const validationConfig = {
+  inputSelector: '.pop-up__input',
+  formSelector: '.pop-up__form',
+  inputErrorClass: 'pop-up__input_type_error',
+  buttonSubmitSelector: '.pop-up__button',
+  inactiveButtonClass: 'pop-up__disabled-button',
+  errorClass: 'error_visible'
+}
+
+const formEditValidator = new FormValidator(validationConfig, popupEditForm);
+const formAddValidator = new FormValidator(validationConfig, popupAddForm);
+
+formEditValidator.enableValidation();
+formAddValidator.enableValidation();
 //Универальная функция открытия pop-up
 function openPopup(popup) {
   popup.classList.add('pop-up_opened');
@@ -41,7 +59,7 @@ function openEditPopup() {
   openPopup(popupEdit);
 }
 //функция открытия image pop-up
-function openImagePopup(evt, link, name) {
+function openImagePopup(link, name) {
   openPopup(imagePopup);
   popupImage.src = link;
   popupImage.alt = name;
@@ -108,42 +126,18 @@ function saveInputAddPopup(evt) {
   cardsElement.prepend(createCard(objectCard));
   closePopupAdd(popupAddForm);
 }
-//создание карточек 
-function createCard(card) {
-  //Содержание карточек
-  const newItemElement = templateElement.content.querySelector('.card').cloneNode(true);
-  const cardImage = newItemElement.querySelector('.card__image');
-  const deleteButton = newItemElement.querySelector('.card__delete-button');
-  const likeButton = newItemElement.querySelector('.card__like-button');
-  //Заполнение карточек
-  newItemElement.querySelector('.card__image').src = card.link;
-  newItemElement.querySelector('.card__image').alt = card.name;
-  newItemElement.querySelector('.card__title').textContent = card.name;
-  //Вызов функцкий, которые связанные с карточками. В самой функции карточек т.к обалсть видимости не позволяет вне ее сделать
-  cardImage.addEventListener('click', evt => openImagePopup(evt, card.link, card.name));
-  likeButton.addEventListener('click', evt => likeHandler(evt, likeButton));
-  deleteButton.addEventListener('click', deleteHandler);
-  return newItemElement;
-}
-//добавления карточкек в дом
-function addInitialCards() {
-  initialCards.forEach(element => {
-    cardsElement.prepend(createCard(element));
-  });
-}
-//лайк карточке
-function likeHandler(evt, likeButton) {
-  likeButton.classList.toggle('card__like-button_active');
-}
-//удаление карточки
-function deleteHandler(evt) {
-  const element = evt.target.closest('.card');
-  element.remove();
+function createCard(object) {
+  const newCard = new Card(object, '.template', openImagePopup);
+  return newCard.generateCard();
 }
 
+// Функция добавления карточки на страницу
+initialCards.forEach((item) => {
+  const cardElement = createCard(item);
+  cardsElement.prepend(cardElement);
+});
+
 createArrPopup();
-//Вызов функции для добавления карточек на страницу через js
-addInitialCards();
 //вызов функции открытия pop-up
 buttonEdit.addEventListener('click', openEditPopup);
 buttonAdd.addEventListener('click', openAddPopup);
