@@ -1,10 +1,11 @@
 export default class Card {
-  constructor(object, templateSelector, openImagePopup) {
+  constructor(object, templateSelector, handleCardClick) {
     this._name = object.name;
     this._link = object.link;
     this._templateSelector = templateSelector;
-    this._openImagePopup = openImagePopup;
+    this._handleCardClick = handleCardClick;
   }
+
   _getTemplate() {
     const cardElement = document
       .querySelector(this._templateSelector)
@@ -14,12 +15,13 @@ export default class Card {
 
     return cardElement;
   }
+
   _handleLikePopup() {
     this._likeButton.classList.toggle('card__like-button_active');
   }
 
   _handleImagePopup() {
-    this._openImagePopup(this._link, this._name);
+    this._handleCardClick(this._link, this._name);
   }
 
   _handleDeletePopup() {
@@ -44,6 +46,7 @@ export default class Card {
       this._handleImagePopup();
     });
   }
+
   generateCard() {
     this._element = this._getTemplate();
 

@@ -23,6 +23,10 @@ export default class FormValidator {
     this._setEventListeners();
   }
 
+  checkButtonState() {
+    this._toggleButtonState();
+  }
+
   _setEventListeners() {
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
