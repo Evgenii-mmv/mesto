@@ -32,8 +32,6 @@ export default class Card {
   _setEventListeners() {
     this._likeButton = this._element.querySelector('.card__like-button');
     this._deleteButton = this._element.querySelector('.card__delete-button');
-    this._cardImage = this._element.querySelector('.card__image');
-
     this._likeButton.addEventListener('click', () => {
       this._handleLikePopup();
     });
@@ -58,8 +56,8 @@ export default class Card {
     this._cardImage.alt = this._name;
 
     this._setEventListeners();
-
     return this._element;
+
   }
 
 }
