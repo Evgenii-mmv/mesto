@@ -15,13 +15,15 @@
     </header>
     <main>
       <section class="profile">
+        <div class="profile__avatar-edit">
         <img src="<%=require('./images/image.png')%>" alt="Жак-Ив Кусто" class="profile__avatar">
+        </div>
         <div class="profile__info">
           <div class="profile__edit">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"><!--Жак-Ив Кусто-->Loading...</h1>
             <button class="profile__edit-button button" type="button"></button>
           </div>
-          <p class="profile__subtitle">Исследователь океана</p>
+          <p class="profile__subtitle"><!--Исследователь океана-->Loading...</p>
         </div>
         <button class="profile__add-button button" type="button"></button>
       </section>
@@ -32,8 +34,8 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="pop-up pop-up pop-up_theme_edit">
-    <div class="pop-up__container">
+  <div class="pop-up  pop-up_theme_edit">
+    <div class="pop-up__container pop-up__container_theme_edit">
       <button type="button" class="pop-up__button pop-up__close-button button"></button>
       <div class="pop-up__content">
         <h2 class="pop-up__title">Редактировать профиль</h2>
@@ -45,11 +47,36 @@
             class="pop-up__input pop-up__input_type_job" required minlength="2" maxlength="200"
             value="Исследователь океана">
           <span class="error" id="jobInput-error"></span>
-          <button type="submit" class="pop-up__button pop-up__save-button">Сохранить</button>
+          <button type="submit" class="pop-up__button pop-up__save-button pop-up__save-button_type_edit">Сохранить</button>
         </form>
       </div>
     </div>
   </div>
+  <section class="pop-up pop-up_theme_avatar">
+    <div class="pop-up__container">
+        <button type="button" class="pop-up__button pop-up__close-button button"></button>
+        <h2 class="pop-up__title">Обновить аватар</h2>
+        <form class="pop-up__form pop-up__form_type_avatar" action="formAvatar" name="formAvatar">
+            <input id="avatar-input" class="pop-up__input pop-up__input_image" type="url" name="link"
+                placeholder="Ссылка на аватар" required />
+                <span class="error" id="avatar-input-error"></span>
+            <button class="pop-up__button pop-up__save-button pop-up__save-button_type_avatar" type="submit"
+                disabled>Сохранить</button>
+        </form>
+    </div>
+</section>
+<section class="pop-up pop-up-warning">
+
+  <div class="pop-up__container">
+      <button class="pop-up__button pop-up__close-button button" type="button"></button>
+      <h2 class="pop-up__title">Вы уверены?</h2>
+
+      <form class="pop-up__form pop-up__form_type_warning" action="formWarning" name="formWarning">
+          <button class="pop-up__button pop-up__save-button pop-up-warning__save-button" type="submit">Да</button>
+      </form>
+  </div>
+
+</section>
   <section class="pop-up pop-up_theme_add">
     <div class="pop-up__container">
       <button type="button" class=" pop-up__button pop-up__close-button button"></button>
@@ -80,7 +107,10 @@
       <img src="#" alt="Карачаевск" class="card__image">
       <div class="card__info">
         <h2 class="card__title"></h2>
+      <div class="card__like">
         <button type="button" class="card__like-button"></button>
+        <p class="card__quantity-like">0</p>
+      </div>
       </div>
     </div>
   </template>
