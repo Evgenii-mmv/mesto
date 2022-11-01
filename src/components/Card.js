@@ -22,6 +22,8 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
     this._templateSelector = templateSelector;
+
+
   }
 
   _getTemplate() {
@@ -47,8 +49,7 @@ export default class Card {
     this._likeButtonElement.addEventListener('click', () => {
       this._handleLikeClick(this._isUserLiked, this._id).then(({isLike, likeCount}) => {
         this._likeCount = likeCount;
-        const quantityLikeElement = this._element.querySelector(this._quantityLikeSelector);
-        quantityLikeElement.textContent = this._likeCount;
+        this._quantityLike.textContent = this._likeCount;
         this._isUserLiked = isLike;
 
         if (isLike) {
@@ -77,8 +78,8 @@ export default class Card {
     this._likeButtonElement = this._element.querySelector('.card__like-button');
 
     // likes
-    const quantityLikeElement = this._element.querySelector(this._quantityLikeSelector);
-    quantityLikeElement.textContent = this._likeCount;
+    this._quantityLike = this._element.querySelector(this._quantityLikeSelector);
+    this._quantityLike.textContent = this._likeCount;
 
     if (this._isUserLiked) {
       this._likeButtonElement.classList.add('card__like-button_active')

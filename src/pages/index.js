@@ -125,6 +125,9 @@ api.getUser().then(userData => {
       });
       return newCard.generateCard();
     }
+  }).catch((e) => {
+    console.error(e);
   });
-
+}).catch((e) => {
+  console.error(e);
 });
