@@ -8,8 +8,8 @@ export default class PopupWithForm extends Popup {
     this._inputForm = this._popupElement.querySelector('.pop-up__form');
     this._inpuList = Array.from(this._popupElement.querySelectorAll('.pop-up__input'));
     this._validator = getValidator(this._inputForm);
-    this._buttonTitle = this._popupElement.querySelector('.pop-up__save-button').textContent;
-    this._buttonTitletype = this._popupElement.querySelector('[type="submit"]');
+    this._buttonTitletype = this._popupElement.querySelector('.pop-up__save-button');
+    this._buttonTitle = this._buttonTitletype.textContent;
   }
 
   _getInputValues() {
